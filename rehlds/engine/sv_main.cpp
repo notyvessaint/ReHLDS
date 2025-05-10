@@ -2411,11 +2411,6 @@ void EXT_FUNC SV_ConnectClient_internal(void)
 
 		Con_Printf("%s:reconnect\n", NET_AdrToString(adr));
 	}
-	else
-	{
-		if (!SV_FindEmptySlot(&adr, &nClientSlot, &client))
-			return;
-	}
 
 	if (!SV_CheckIPConnectionReuse(&adr))
 		return;
@@ -2452,6 +2447,9 @@ void EXT_FUNC SV_ConnectClient_internal(void)
 			host_client->network_userid.idtype = AUTH_IDTYPE_STEAM;
 			host_client->network_userid.m_SteamID = 0;
 		}
+
+		if (!SV_FindEmptySlot(&adr, &nClientSlot, &client))
+			return;
 	}
 	else
 	{
@@ -2476,6 +2474,9 @@ void EXT_FUNC SV_ConnectClient_internal(void)
 		host_client->network_userid.m_SteamID = 0;
 		host_client->network_userid.clientip = *(uint32 *)&adr.ip[0];
 		Steam_NotifyBotConnect(client);
+		
+		if (!SV_FindEmptySlot(&adr, &nClientSlot, &client))
+			return;
 	}
 
 	SV_ClearResourceLists(host_client);
