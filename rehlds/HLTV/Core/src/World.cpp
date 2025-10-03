@@ -535,7 +535,7 @@ void World::WriteServerinfo(BitBuffer *stream)
 
 	stream->WriteLong(mungebuffer);
 	stream->WriteBuf(m_ClientdllMD5, sizeof(m_ClientdllMD5));
-	stream->WriteByte(m_Maxclients);
+	stream->WriteByte(32);
 	stream->WriteByte(m_PlayerNum);
 	stream->WriteByte(m_GameType);			// deathmatch, coop etc
 	stream->WriteString(m_GameDir);
