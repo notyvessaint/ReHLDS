@@ -1115,7 +1115,7 @@ void SV_SendServerinfo_internal(sizebuf_t *msg, client_t *client)
 	MSG_WriteLong(msg, mungebuffer);
 
 	MSG_WriteBuf(msg, sizeof(g_psv.clientdllmd5), g_psv.clientdllmd5);
-	MSG_WriteByte(msg, g_psvs.maxclients);
+	MSG_WriteByte(msg, 32);
 	MSG_WriteByte(msg, playernum);
 
 	if (coop.value == 0.0f && deathmatch.value != 0.0f)
@@ -8596,4 +8596,5 @@ NOXREF qboolean BIsValveGame(void)
 	}
 	return FALSE;
 }
+
 
