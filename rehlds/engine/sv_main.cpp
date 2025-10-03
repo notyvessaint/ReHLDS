@@ -7913,6 +7913,7 @@ void SV_BeginFileDownload_f(void)
 
 void SV_SetMaxclients(void)
 {
+	int maxc = 64;
 	int i;
 	client_t *cl;
 
@@ -7932,13 +7933,13 @@ void SV_SetMaxclients(void)
 
 	g_pcls.state = (cactive_t)(g_bIsDedicatedServer == FALSE);
 
-	if (g_psvs.maxclients > 32)
-		g_psvs.maxclients = 32;
+	if (g_psvs.maxclients > maxc)
+		g_psvs.maxclients = maxc;
 	if (g_psvs.maxclients < 1)
 		g_psvs.maxclients = 6;
 
 	if (g_bIsDedicatedServer)
-		g_psvs.maxclientslimit = 32;
+		g_psvs.maxclientslimit = maxc;
 	else if(host_parms.memsize > 0x1000000)
 		g_psvs.maxclientslimit = 4;
 
@@ -8595,3 +8596,4 @@ NOXREF qboolean BIsValveGame(void)
 	}
 	return FALSE;
 }
+
