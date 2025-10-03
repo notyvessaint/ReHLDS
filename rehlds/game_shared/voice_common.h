@@ -35,8 +35,8 @@
 #include "bitvec.h"
 
 // TODO: this should just be set to MAX_CLIENTS
-#define VOICE_MAX_PLAYERS			32
-#define VOICE_MAX_PLAYERS_DW		((VOICE_MAX_PLAYERS / 32) + !!(VOICE_MAX_PLAYERS & 31))
+#define VOICE_MAX_PLAYERS			64
+#define VOICE_MAX_PLAYERS_DW		((VOICE_MAX_PLAYERS / 64) + !!(VOICE_MAX_PLAYERS & 63))
 
 typedef CBitVec< VOICE_MAX_PLAYERS > CPlayerBitVec;
 
